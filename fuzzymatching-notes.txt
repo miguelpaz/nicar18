@@ -1,0 +1,158 @@
+* Fuzzy matching workshop at NICAR18
+
+-Theresa May vs Theresa Mary May vs Theresa May MP 
+-Offshore names: 53 thousand names, most normal people, and need to find names and do fuzzy matching
+-Global Witness: Jade Myanmar's big state secret
+-Irin: UN paying blacklisted diamond company
+
+** Tool for the day CSV Macth
+- Github.com/maxharlow/csvmatch
+- Command line tool in Terminal> short explanation od pwd, ls and cd plus trick to autocomplete with tab type Finding_n press tab for autocomplete
+
+-download
+White House visitros list updated 
+bit.ly/2Frudpe
+CIA world leaders list 
+bit.ly/2Hju6IX
+
+put it in the folder
+go ls
+
+1. - Exact matches
+2 files and the name is written in the same way
+How many names on the Forbes world billionaires list are also in the China's billionaires list?
+
+first csv match
+
+csvmatch \
+forbes-billionaires.csv \
+forbes-china-billionaires.csv \
+--fields1 name \
+--fields2 name
+
+the \ works to tell the command line you are not done yet
+Type it out in the command line and see what you get
+
+next step
+all in the terminal and we 
+this --fields1  is a flag to specity what column to use, flags can be written in two ways the liong way with 2 dashes --fields1 or the short way -1 or -A (single letter or number)
+
+If you press UP in terminal will show you what was the last thing you did.
+
+Lets add the names we matched in the billionaires-from-chinca.csv file
+csvmatch \
+forbes-billionaires.csv \
+forbes-china-billionaires.csv \
+--fields1 name \
+--fields2 name
+> billionaires-from-chinca.csv
+
+press enter, now we want to rank?
+
+$ csvmatch forbes-billionaires.csv forbes-china-billionaires.csv --fields1 name --fields2 name --output 1.name 1.realTimeRank > billionaires-from-china.csv
+
+2. NAIVE APPROACHES TO FUZZY 
+Ignoring things like 
+uppercase
+common name prefixes (Mr. Ms., etc)
+other domain-specific words
+non-alpphanumerics
+non-latin characters
+order the words are in
+IMPORTANT FOR EACH ONE THERE IS A FLAG
+
+Example 
+Orban, Viktor
+Viktor Orban
+
+How do we match it up? Lets try it out.
+Whuch names from the CIA world leaders list are also in the White House guest list
+lets open both csv's with open name of file and tab
+
+users-Mac-mini-2:Finding_needles_in_haystacks_with_fuzzy_matching_1239 user$ open cia-world-leaders.csv 
+users-Mac-mini-2:Finding_needles_in_haystacks_with_fuzzy_matching_1239 user$ open white-house-visitors2.csv
+The file /Users/user/Desktop/hands_on_classes/Finding_needles_in_haystacks_with_fuzzy_matching_1239/white-house-visitors2.csv does not exist.
+users-Mac-mini-2:Finding_needles_in_haystacks_with_fuzzy_matching_1239 user$ ls
+billionaires-from-china.csv	forbes-billionaires.csv		un-sanctions-jan-2018.csv
+billionaires-from-chinca.csv	forbes-china-billionaires.csv	white-house-visitors-2.csv
+cia-world-leaders.csv		forbes-forbes-400.csv		white-house-visitors.csv
+users-Mac-mini-2:Finding_needles_in_haystacks_with_fuzzy_matching_1239 user$ white-house-visitors-2.csv
+-bash: white-house-visitors-2.csv: command not found
+users-Mac-mini-2:Finding_needles_in_haystacks_with_fuzzy_matching_1239 user$ open white-house-visitors-2.csv
+
+
+
+now run 
+
+csvmatch \
+cia-world-leaders.csv \
+white-house-visitors-2.csv \
+--fields1 leader_name \
+--fields2 visitors_name \
+--ignore-case \
+> leaders-visiting-trump.csv
+
+
+-LEVENSHTEIN fuzzy algorithm
+
+Max Harlow = Max Harkow ?
+>> 90% the same
+
+Max Harlow = John Dales ?
+>> 10% the same because the L is in last name in same place
+
+SO lets find
+
+csvmatch \
+cia-world-leaders.csv \
+forbes-china-billionaires.csv \
+--fields1 leader_name \
+--fields2 name \
+--fuzzy levenshtein \
+> billionaires-chinese-leaders.csv
+
+-METHAPHONE fuzzy algorithm
+
+Catherine = Kathryn ? If it sounds the same is a match
+>> YES THE SAME
+
+David = Dave ?
+>> NO!
+
+Which world leaders from the CIA list are also on the United Nations sanction list
+
+
+-BILENKO fuzzy algotihtm * machine learning
+
+Bult for deduping data and doing fuzzy matchning
+
+John Kennedy = Jim Kennedy ?
+>> Thinhs and asks you questions
+Rob Ford = Robert J Ford ?
+>> things and asks you questions
+
+Which names from the CIA world leaders list are on the White House visitros list? With the power of machine learning
+
+csvmatch \
+cia-world-leaders.csv \
+white-house-visitors-2.csv \
+--fields1 leader_name \
+--fields2 visitor_name \
+--fuzzy bilenko \
+> leaders-visiting-trump-3.csv
+
+CAVEATS
+Same name does not mean same person, medium size data only, every row needs to be matched against every other row
+To work out how many comparisons that means take the number of rows in the two files and multiply them
+Both files need to be loaded in the cimputers memory to work
+
+
+Slides bit.ly/2FcqOdP
+@maxharlow
+I can get in touch with him for ptojects
+
+
+
+
+
+
