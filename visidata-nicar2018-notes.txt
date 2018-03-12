@@ -1,0 +1,77 @@
+OCR PDF
+presentation https://docs.google.com/presentation/d/12ShGfr3HhSXdLwK5R1pr1J5cvjLXuEmaXGxErG3gShg/edit#slide=id.g1ebfd012eb_0_11
+files goo.gl/WxsdCg
+
+
+documentation
+http://visidata.org/
+https://jsvine.github.io/intro-to-visidata/
+http://visidata.org/docs/navigate/ 
+https://github.com/saulpw/visidata/
+
+VISIDATA first tool I reach out to when I open a file. It does not require a lot of command line savvy, it has its own shortcuts that are fairly straightforward and take a little muscle memory and calistenics, you may feel a bit weird after the class but eventually you pick it up because its really fast.
+For me is just faster and help me get to answer whats in the file.
+Not a tool for generating new csv files like csvkit not for big analysis but incredible helpful to understand WHATS in the file
+
+arrows to move around
+navigation h \ j \ k \ l
+move all the rows to the right or the left with gl all the way to the left gh gj gk G Stands for Global
+Search you use / and type whatever you are looking in the column you have selected 
+if you get into trouble and type control c it will stop everything is doing
+Use / and the word for searching. Searches are not case sensitive.
+
+SHIFT f = wil give you the frequency in the column you have selected
+IMPORTANT COMMAND: Q. Leave the view we are now and go back to where we were.
+
+IF YOU ARE IN ANY COLUMN AND WANT TO EXPAND IT 
+
+You can search across all columns: for that type g/united and is going to search everything g for global then what you want to search /word you want to search
+
+if you hit shift c you get the list of all columns and some overview data
+
+Visidata assumes everything is text and you cand and should define columns to tell it some are numbers
+
+Go to HEIGHT column  and type SHIFT 3 same for SPEED. If it shows yoyu a ? then it means it does not understand how to do that. 
+Hit SHIFT ~ to go back
+
+My philosophy with visidata is not to be doing a big analysis in it is much more for reviewing and exploring the data.
+
+ROWS in visidata you can select or unselect.
+Select a random row and press s.
+The opposite to unselect is u
+Then is t for toggle 
+for global gs or gu or gt
+
+F is for Frequency
+
+You can do basic calculations: 
+c+ for aggregate 
+
+Start by sorting { } } for asencing and { for descending
+
+I recommend not editing anything in visidata, but you can do it. You select the cell you want to edit and type e, what is useful to edit is the columns name and for that you will type ^
+
+YOU CAN SAVE YOUR NEW SELECTED MATERIAL AS A NEW FILE. For that you hit control S 
+
+use GQ to exit all
+
+Lets open another one but an excel file 
+Maximum file size is whatever your computer can take. If you are working with more than a GB of data take a random sample.
+
+EXCEL MAY HAVE LOTS OF WORKSHEETS AND YOU WILL SEE A LIST OF SHEETS
+Open one by hitting enter
+
+CONTROL l redrwars the screen
+
+Whenever you are lost and want to know about a command you type z?
+
+You have to tell Visidata that your first row is headers. To do that you select the row for headers and type g^
+
+Visidata will try to guess what type of numerical data it is. If you accept it, you select the column header and type shift 5
+
+SI TE SIENTES PERFIFO PUEDES VER QUE SHEETS TIENES ABIERTAS shift s and see the sheets and you can rename the sheets
+
+ME PERDI!!!!
+
+survey https://docs.google.com/forms/d/e/1FAIpQLSed6peNlSCcNSkuCmtB5WYwqbNDojjzOtFRtE5KFdbJxe0Alg/viewform
+
