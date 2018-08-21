@@ -1,4 +1,4 @@
-* Fuzzy matching workshop at NICAR18
+* Fuzzy matching workshop at NICAR18 (raw notes)
 
 -Theresa May vs Theresa Mary May vs Theresa May MP 
 -Offshore names: 53 thousand names, most normal people, and need to find names and do fuzzy matching
