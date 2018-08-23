@@ -1,2 +1,2 @@
 # Nicar18
-Raw notes and materials from workshops I attended.
+Raw notes and materials of workshops I attended.
